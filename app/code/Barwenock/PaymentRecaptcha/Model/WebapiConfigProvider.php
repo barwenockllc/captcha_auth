@@ -4,34 +4,30 @@ declare(strict_types=1);
 
 namespace Barwenock\PaymentRecaptcha\Model;
 
-use Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface;
-use Magento\ReCaptchaUi\Model\ValidationConfigResolverInterface;
-use Magento\ReCaptchaValidationApi\Api\Data\ValidationConfigInterface;
-use Magento\ReCaptchaWebapiApi\Api\Data\EndpointInterface;
-use Magento\ReCaptchaWebapiApi\Api\WebapiValidationConfigProviderInterface;
-
 /**
  * @inheritdoc
  */
-class WebapiConfigProvider implements WebapiValidationConfigProviderInterface
+class WebapiConfigProvider implements \Magento\ReCaptchaWebapiApi\Api\WebapiValidationConfigProviderInterface
 {
     private const PAYMENT_CAPTCHA_ID = 'barwenock_payment';
 
     /**
-     * @var IsCaptchaEnabledInterface
+     * @var \Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface
      */
     private $isEnabled;
 
     /**
-     * @var ValidationConfigResolverInterface
+     * @var \Magento\ReCaptchaUi\Model\ValidationConfigResolverInterface
      */
     private $configResolver;
 
     /**
-     * @param IsCaptchaEnabledInterface $isEnabled
-     * @param ValidationConfigResolverInterface $configResolver
+     * @param \Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface $isEnabled
+     * @param \Magento\ReCaptchaUi\Model\ValidationConfigResolverInterface $configResolver
      */
-    public function __construct(IsCaptchaEnabledInterface $isEnabled, ValidationConfigResolverInterface $configResolver)
+    public function __construct(
+        \Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface $isEnabled,
+        \Magento\ReCaptchaUi\Model\ValidationConfigResolverInterface $configResolver)
     {
         $this->isEnabled = $isEnabled;
         $this->configResolver = $configResolver;
@@ -40,7 +36,8 @@ class WebapiConfigProvider implements WebapiValidationConfigProviderInterface
     /**
      * @inheritDoc
      */
-    public function getConfigFor(EndpointInterface $endpoint): ?ValidationConfigInterface
+    public function getConfigFor(\Magento\ReCaptchaWebapiApi\Api\Data\EndpointInterface $endpoint):
+        ?\Magento\ReCaptchaValidationApi\Api\Data\ValidationConfigInterface
     {
         if ($endpoint->getServiceClass() === 'Barwenock\Payment\Api\PaymentInterface') {
             if ($this->isEnabled->isCaptchaEnabledFor(self::PAYMENT_CAPTCHA_ID)) {

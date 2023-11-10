@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Barwenock\Payment\Model;
 
 class Payment implements \Barwenock\Payment\Api\PaymentInterface
@@ -18,6 +20,9 @@ class Payment implements \Barwenock\Payment\Api\PaymentInterface
         $this->request = $request;
     }
 
+    /**
+     * @return void
+     */
     public function sendPaymentData()
     {
         $this->request->getParams();

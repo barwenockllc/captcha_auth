@@ -4,21 +4,18 @@ declare(strict_types=1);
 
 namespace Barwenock\PaymentRecaptcha\Model;
 
-use Magento\Checkout\Model\ConfigProviderInterface;
-use Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface;
-
-class CheckoutConfigProvider implements ConfigProviderInterface
+class CheckoutConfigProvider implements \Magento\Checkout\Model\ConfigProviderInterface
 {
     /**
-     * @var IsCaptchaEnabledInterface
+     * @var \Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface
      */
     private $isCaptchaEnabled;
 
     /**
-     * @param IsCaptchaEnabledInterface $isCaptchaEnabled
+     * @param \Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface $isCaptchaEnabled
      */
     public function __construct(
-        IsCaptchaEnabledInterface $isCaptchaEnabled
+        \Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface $isCaptchaEnabled
     ) {
         $this->isCaptchaEnabled = $isCaptchaEnabled;
     }
