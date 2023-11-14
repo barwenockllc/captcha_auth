@@ -1,3 +1,10 @@
+<!--
+/**
+ * @author Barwenock
+ * @copyright Copyright (c) Barwenock
+ * @package Payment Captcha for Magento 2
+ */
+ -->
 /* global grecaptcha */
 require(
     [

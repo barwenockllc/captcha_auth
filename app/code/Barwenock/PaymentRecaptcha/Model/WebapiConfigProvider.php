@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Barwenock
+ * @copyright Copyright (c) Barwenock
+ * @package Payment Captcha for Magento 2
+ */
 
 declare(strict_types=1);
 
@@ -9,6 +14,9 @@ namespace Barwenock\PaymentRecaptcha\Model;
  */
 class WebapiConfigProvider implements \Magento\ReCaptchaWebapiApi\Api\WebapiValidationConfigProviderInterface
 {
+    /**
+     * Payment captcha ID
+     */
     private const PAYMENT_CAPTCHA_ID = 'barwenock_payment';
 
     /**
