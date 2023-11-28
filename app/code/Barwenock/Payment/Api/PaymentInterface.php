@@ -12,6 +12,8 @@ namespace Barwenock\Payment\Api;
 interface PaymentInterface
 {
     /**
+     * Send payment data api
+     *
      * @return mixed
      */
     public function sendPaymentData();

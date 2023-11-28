@@ -26,12 +26,13 @@ class Payment implements \Barwenock\Payment\Api\PaymentInterface
     }
 
     /**
+     * Implementation of sending payment data
+     *
      * @return void
      */
     public function sendPaymentData()
     {
         $this->request->getParams();
-
 
         //Some logic for handling payment information
     }

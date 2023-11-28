@@ -35,8 +35,8 @@ class WebapiConfigProvider implements \Magento\ReCaptchaWebapiApi\Api\WebapiVali
      */
     public function __construct(
         \Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface $isEnabled,
-        \Magento\ReCaptchaUi\Model\ValidationConfigResolverInterface $configResolver)
-    {
+        \Magento\ReCaptchaUi\Model\ValidationConfigResolverInterface $configResolver
+    ) {
         $this->isEnabled = $isEnabled;
         $this->configResolver = $configResolver;
     }
@@ -47,10 +47,9 @@ class WebapiConfigProvider implements \Magento\ReCaptchaWebapiApi\Api\WebapiVali
     public function getConfigFor(\Magento\ReCaptchaWebapiApi\Api\Data\EndpointInterface $endpoint):
         ?\Magento\ReCaptchaValidationApi\Api\Data\ValidationConfigInterface
     {
-        if ($endpoint->getServiceClass() === 'Barwenock\Payment\Api\PaymentInterface') {
-            if ($this->isEnabled->isCaptchaEnabledFor(self::PAYMENT_CAPTCHA_ID)) {
-                return $this->configResolver->get(self::PAYMENT_CAPTCHA_ID);
-            }
+        if ($endpoint->getServiceClass() === \Barwenock\Payment\Api\PaymentInterface::class
+            && $this->isEnabled->isCaptchaEnabledFor(self::PAYMENT_CAPTCHA_ID)) {
+            return $this->configResolver->get(self::PAYMENT_CAPTCHA_ID);
         }
 
         return null;
