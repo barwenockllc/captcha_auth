@@ -3,7 +3,7 @@
 /**
  * @author Barwenock
  * @copyright Copyright (c) Barwenock
- * @package Video Export for Magento 2
+ * @package Payment Captcha for Magento 2
  */
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
